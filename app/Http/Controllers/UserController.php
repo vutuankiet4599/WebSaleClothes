@@ -111,6 +111,7 @@ class UserController extends Controller
                 }
                 $product = product::find($item['productInfo']->id)->first();
                 $product->quantity -= $item['quantity'];
+                $product->sale_numbers += $item['quantity'];
                 $product->save();
 
             }
@@ -125,7 +126,7 @@ class UserController extends Controller
                 ]);
             }
         });
-
+        $req->session()->forget('cart');
 
         return redirect(route('shop', ['id' => 1]));
     }

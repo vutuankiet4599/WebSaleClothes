@@ -370,20 +370,13 @@
     <script src="/js/jquery.nicescroll.min.js"></script>
     <script src="/js/main.js"></script>
     <script>
-        // $(".icon_close").on("click", function () {
-        //     $.ajax({
-        //         url : 'delete-item/'+$(this).data("id"),
-        //         type : 'GET',
-        //     }).done(function(response){
-        //         alert('Xóa thành công');
-        //     });
-        // });
         function deleteItem(id){
             $.ajax({
                 url : 'delete-item/'+id,
                 type : 'GET',
             }).done(function(response){
                 alert('Xóa thành công');
+                location.reload();
             });
         }
 
@@ -407,6 +400,7 @@
                     "data": lists,
                 },
             }).done(function(response){
+                alert('Lưu lại thành công');
                 location.reload();
             });
         }
