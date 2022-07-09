@@ -49,7 +49,7 @@
                                                 @php
                                                     $pic = $product['productInfo']->thumbnails_detail()->where('url', 'like', '%'.'shop/'.'%')->first();
                                                 @endphp
-                                                <img src="/img/{{$pic->url}}" alt="" style="width:50px;height:60px;">
+                                                <img src="{{ asset('/img/'.$pic->url) }}" alt="" style="width:50px;height:60px;">
                                                 <div class="cart__product__item__title">
                                                     <h6>{{$product['productInfo']->product_name}}</h6>
                                                 </div>

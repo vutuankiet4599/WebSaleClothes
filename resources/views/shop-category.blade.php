@@ -54,9 +54,9 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="product__item">
                                     @foreach ($p->thumbnails_detail()->where('url', 'like', '%'.'shop/'.'%')->get() as $mainPicture)
-                                        <div class="product__item__pic set-bg" data-setbg="/img/{{$mainPicture->url}}">
+                                        <div class="product__item__pic set-bg" data-setbg="{{ asset('/img/'.$mainPicture->url) }}">
                                             <ul class="product__hover">
-                                                <li><a href="/img/{{$mainPicture->url}}" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                                <li><a href="{{ asset('/img/'.$mainPicture->url) }}" class="image-popup"><span class="arrow_expand"></span></a></li>
                                                 <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                                 <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                                             </ul>

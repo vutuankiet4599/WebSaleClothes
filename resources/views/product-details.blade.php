@@ -7,7 +7,7 @@
     @include('header')
 
     <!-- Breadcrumb Begin -->
-    <div class="breadcrumb-option">
+    {{-- <div class="breadcrumb-option">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Breadcrumb End -->
 
     <!-- Product Details Section Begin -->
@@ -34,7 +34,7 @@
                                 @endphp
                                 @foreach ($product->thumbnails_detail()->where('url', 'like', '%'.'product/details/thumb'.'%')->get() as $thumb)
                                     <a class="pt active" href="#product-{{$i}}">
-                                        <img src="/img/{{$thumb->url}}" alt="">
+                                        <img src="{{ asset('/img/'.$thumb->url) }}" alt="">
                                     </a>
                                     @php
                                         $i++;
@@ -48,7 +48,7 @@
                                         $i=1;
                                     @endphp
                                     @foreach ($product->thumbnails_detail()->where('url', 'like', '%'.'product/details/product'.'%')->get() as $prodImg)
-                                        <img data-hash="product-{{$i}}" class="product__big__img" src="/img/{{$prodImg->url}}" alt="">
+                                        <img data-hash="product-{{$i}}" class="product__big__img" src="{{ asset('/img/'.$prodImg->url) }}" alt="">
                                         @php
                                             $i++;
                                         @endphp
