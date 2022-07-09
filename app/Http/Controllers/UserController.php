@@ -21,10 +21,12 @@ class UserController extends Controller
         $product = product::offset($page)->limit(9)->get(); // Mỗi trang lấy 9 sản phẩm
         $count = product::get()->count();
         $count = ceil($count/9);
+        $categories = category::get();
         return view('shop', [
             'id' => $id,
             'product' => $product,
             'count' => $count,
+            'categories' => $categories,
         ]);
     }
 
@@ -35,12 +37,17 @@ class UserController extends Controller
 
     public function getProductDetail($id)
     {
-        $products = product::find($id)->get();
-        if(!empty($products)){
-            return view('product-details', ['products' => $products]);
-        }else {
-            return "Khong co san pham nay";
+        try {
+            $products = product::find($id)->get();
+            if(!empty($products)){
+                return view('product-details', ['products' => $products]);
+            }else {
+                return "Khong co san pham nay";
+            }
+        } catch (\Throwable $th) {
+            return "Cơ sở dữ liệu trống";
         }
+
 
     }
 
@@ -119,7 +126,7 @@ class UserController extends Controller
             foreach ($cart->products as $item){
                 $order->orderdetail()->create([
                     'id' => rand(0, 10000),
-                    'id_product' => $item['productInfo']->id,
+                    'product_id' => $item['productInfo']->id,
                     'price' => $item['productInfo']->price,
                     'size' => 'XL',
                     'total_money' => $item['price']
@@ -129,5 +136,19 @@ class UserController extends Controller
         $req->session()->forget('cart');
 
         return redirect(route('shop', ['id' => 1]));
+    }
+
+    public function getShopByCategory($id, $page = 1){
+        $page = $page - 1;
+        $product = product::offset($page)->where('category_id', $id)->limit(9)->get(); // Mỗi trang lấy 9 sản phẩm
+        $count = product::get()->count();
+        $count = ceil($count/9);
+        $categories = category::get();
+        return view('shop-category', [
+            'id' => $id,
+            'product' => $product,
+            'count' => $count,
+            'categories' => $categories,
+        ]);
     }
 }

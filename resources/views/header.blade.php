@@ -45,7 +45,7 @@
                             <li><a href="{{ route('shop', ['id' => '1']) }}">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="{{ route('productdetail', ['id'=>'0']) }}">Product Details</a></li>
+                                    <li><a href="{{ route('productdetail', ['id'=>'1']) }}">Product Details</a></li>
                                     <li><a href="{{ route('shopcart') }}">Shop Cart</a></li>
                                     <li><a href="{{ route('checkout') }}">Checkout</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>

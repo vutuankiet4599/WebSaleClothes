@@ -32,6 +32,7 @@ Route::prefix('user')->group(function (){
     Route::get('/delete-item/{id}', [UserController::class, 'getDeleteItem'])->name('deleteitem');
     Route::post('/save-all', [UserController::class, 'postSaveAllItem']);
     Route::post('/order', [UserController::class, 'postOrder'])->name('order');
+    Route::get('/category-{id}/{page}', [UserController::class, 'getShopByCategory'])->name('shopcategory');
 });
 
 

@@ -37,7 +37,7 @@
                                         @foreach ($categories as $category)
                                             <div class="card">
                                                 <div class="card-heading active">
-                                                    <a href="{{ route('shopcategory', ['id'=>$category->id, 'page'=>1]) }}">{{$category->category_name}}</a>
+                                                    <a href="{{ route('shopcategory', ['page'=>1,'id'=>$category->id]) }}">{{$category->category_name}}</a>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -77,7 +77,7 @@
                         <div class="col-lg-12 text-center">
                             <div class="pagination__option">
                                 @for ($i = 1; $i <= $count; $i++)
-                                    <a href="{{ route('shop', ['id'=>$i]) }}">{{$i}}</a>
+                                    <a href="{{ route('shopcategory', ['page'=>$i,'id'=>$id]) }}">{{$i}}</a>
                                 @endfor
                             </div>
                         </div>

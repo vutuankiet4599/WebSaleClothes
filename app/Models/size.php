@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class size extends Model
 {
     use HasFactory;
-    protected $table = 'sizes';
+    protected $table = 'size';
     public function product(){
         return $this->belongsTo(product::class, 'id_product', 'id');
     }
