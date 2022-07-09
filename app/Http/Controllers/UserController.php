@@ -38,9 +38,9 @@ class UserController extends Controller
     public function getProductDetail($id)
     {
         try {
-            $products = product::find($id)->get();
-            if(!empty($products)){
-                return view('product-details', ['products' => $products]);
+            $product = product::where("id",$id)->first();
+            if(!empty($product)){
+                return view('product-details', ['product' => $product]);
             }else {
                 return "Khong co san pham nay";
             }

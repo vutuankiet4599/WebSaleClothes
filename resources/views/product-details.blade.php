@@ -26,7 +26,6 @@
     <section class="product-details spad">
         <div class="container">
             <div class="row">
-                @foreach ($products as $product)
                     <div class="col-lg-6">
                         <div class="product__details__pic">
                             <div class="product__details__pic__left product__thumb nice-scroll">
@@ -72,7 +71,6 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
             </div>
 
         </div>
