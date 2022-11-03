@@ -20,6 +20,7 @@ return new class extends Migration
             $table->char('phone', 11);
             $table->string('address', 50);
             $table->text('note');
+            $table->integer('status');
             $table->timestamp('order_time');
         });
     }

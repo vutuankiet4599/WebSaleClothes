@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title', 50);
             $table->text('feedback');
             $table->timestamp('created_at');
+            $table->foreign('user_id')->references('users')->on('id')->onDelete('cascade');
         });
     }
 

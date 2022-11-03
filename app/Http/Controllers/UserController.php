@@ -18,7 +18,7 @@ class UserController extends Controller
     public function getShop($id = 1)
     {
         $page = $id - 1;
-        $product = product::offset($page)->limit(9)->get(); // Mỗi trang lấy 9 sản phẩm
+        $product = product::offset($page*9)->limit(9)->get(); // Mỗi trang lấy 9 sản phẩm
         $count = product::get()->count();
         $count = ceil($count/9);
         $categories = category::get();
@@ -42,10 +42,10 @@ class UserController extends Controller
             if(!empty($product)){
                 return view('product-details', ['product' => $product]);
             }else {
-                return "Khong co san pham nay";
+                return redirect(route('home'));
             }
         } catch (\Throwable $th) {
-            return "Cơ sở dữ liệu trống";
+            return redirect(route('home'));
         }
 
 
@@ -110,6 +110,7 @@ class UserController extends Controller
             $order->email = $req->input('email');
             $order->note = $req->input('note');
             $order->address = $req->input('address');
+            $order->status = 0;
             $order->order_time = now();
 
             foreach ($cart->products as $item) {
@@ -141,7 +142,7 @@ class UserController extends Controller
     public function getShopByCategory($id, $page = 1){
         $page = $page - 1;
         $product = product::offset($page)->where('category_id', $id)->limit(9)->get(); // Mỗi trang lấy 9 sản phẩm
-        $count = product::get()->count();
+        $count = product::get()->where('category_id', $id)->count();
         $count = ceil($count/9);
         $categories = category::get();
         return view('shop-category', [

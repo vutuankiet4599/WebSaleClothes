@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('orderdetails', function (Blueprint $table) {
             $table->integer('id');
-            $table->integer('id_product');
+            $table->integer('product_id');
             $table->integer('order_id');
             $table->integer('price');
             $table->char('size', 4);
             $table->integer('total_money');
+            $table->foreign('order_id')->references('orders')->on('id')->onDelete('cascade');
+            $table->foreign('product_id')->references('products')->on('id')->onDelete('cascade');
         });
     }
 

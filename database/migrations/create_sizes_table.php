@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('sizes', function (Blueprint $table) {
             $table->integer('id_product');
             $table->char('size', 4);
+            $table->foreign('id_product')->references('products')->on('id')->onDelete('cascade');
         });
     }
 

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('sale_numbers');
             $table->text('description');
             $table->timestamps();
+            $table->foreign('category_id')->references('categories')->on('id')->onDelete('cascade');
         });
     }
 
